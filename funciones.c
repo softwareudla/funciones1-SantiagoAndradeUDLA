@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "funciones.h"
-#include "calculos.h"
+
+
 
 int ingresarProducto(char nombres[][50], float precios[], int num_productos) {
     printf("Ingresa el nombre del producto: ");
@@ -48,4 +49,38 @@ void buscarProducto(char nombres[][50], float precios[], int num_productos) {
     if (!encontrado) {
         printf("Producto no encontrado.\n");
     }
+}
+
+// Funciones en calculos.c
+float calcularTotal(float precios[], int num_productos) {
+    float total = 0;
+    for (int i = 0; i < num_productos; i++) {
+        total += precios[i];
+    }
+    return total;
+}
+
+int encontrarMasCaro(float precios[], int num_productos) {
+    int indice = 0;
+    for (int i = 1; i < num_productos; i++) {
+        if (precios[i] > precios[indice]) {
+            indice = i;
+        }
+    }
+    return indice;
+}
+
+int encontrarMasBarato(float precios[], int num_productos) {
+    int indice = 0;
+    for (int i = 1; i < num_productos; i++) {
+        if (precios[i] < precios[indice]) {
+            indice = i;
+        }
+    }
+    return indice;
+}
+
+float calcularPromedio(float precios[], int num_productos) {
+    if (num_productos == 0) return 0;
+    return calcularTotal(precios, num_productos) / num_productos;
 }
