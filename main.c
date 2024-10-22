@@ -38,11 +38,11 @@ int main() {
         printf("\n---- Menú de Inventario ----\n");
         printf("1. Ingresar producto\n");
         printf("2. Mostrar total del inventario\n");
-        printf("3. Producto más caro y más barato\n");
+        printf("3. Producto mas caro y mas barato\n");
         printf("4. Precio promedio\n");
         printf("5. Buscar producto por nombre\n");
         printf("6. Salir\n");
-        printf("Elige una opción: ");
+        printf("Elige una opcion: ");
         scanf("%d", &opcion);
 
         switch(opcion) {
@@ -69,7 +69,7 @@ int main() {
                 printf("Saliendo...\n");
                 break;
             default:
-                printf("Opción no válida.\n");
+                printf("Opcion no valida.\n");
                 break;
         }
     } while (opcion != 6);

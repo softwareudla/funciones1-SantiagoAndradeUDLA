@@ -6,13 +6,22 @@
 
 int ingresarProducto(char nombres[][50], float precios[], int num_productos) {
     printf("Ingresa el nombre del producto: ");
-    getchar();  // Limpiar el buffer?
+    getchar();  // Limpiar el buffer
     fgets(nombres[num_productos], 50, stdin);
-    nombres[num_productos][strcspn(nombres[num_productos], "\n")] = '\0'; // Eliminar el salto de línea
-    printf("Ingresa el precio del producto: ");
-    scanf("%f", &precios[num_productos]);
+    nombres[num_productos][strcspn(nombres[num_productos], "\n")] = '\0';  // Eliminar el salto de línea
+
+    // Validación para asegurarse de que el precio no sea menor a 0
+    do {
+        printf("Ingresa el precio del producto: "); //confrimacion 
+        scanf("%f", &precios[num_productos]);
+
+        if (precios[num_productos] < 0) {
+            printf("Error: El precio no puede ser menor que 0. Intentalo nuevamente.\n");
+        }
+    } while (precios[num_productos] < 0);  // Repite si el precio es negativo
+
     num_productos++;
-    return num_productos;  // Devolver num_productos nuevo
+    return num_productos;
 }
 
 void mostrarTotal(float precios[], int num_productos) {
@@ -22,8 +31,8 @@ void mostrarTotal(float precios[], int num_productos) {
 void mostrarExtremos(char nombres[][50], float precios[], int num_productos) {
     int caro = encontrarMasCaro(precios, num_productos);
     int barato = encontrarMasBarato(precios, num_productos);
-    printf("Producto más caro: %s con precio %.2f\n", nombres[caro], precios[caro]);
-    printf("Producto más barato: %s con precio %.2f\n", nombres[barato], precios[barato]);
+    printf("Producto mas caro: %s con precio %.2f\n", nombres[caro], precios[caro]);
+    printf("Producto mas barato: %s con precio %.2f\n", nombres[barato], precios[barato]);
 }
 
 void mostrarPromedio(float precios[], int num_productos) {
