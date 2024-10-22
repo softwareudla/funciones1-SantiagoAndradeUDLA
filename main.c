@@ -20,6 +20,8 @@ Dividir el programa en varios archivos, separando las funciones del código prin
 No se deben utilizar estructuras ni punteros.
 */
 
+//activar workflow
+
 #include <stdio.h>
 #include <string.h>
 #include "funciones.h"
